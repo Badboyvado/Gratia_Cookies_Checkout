@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gratia Cookies - Checkout </title>
+    <link rel="stylesheet" href="checkout.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap" rel="checkout.css"/>
+</head>
+<body>
+    <!-- NAV -->
+     <nav class="checkout-nav">
+        <a href="index.html" class="nav-logo">Gratia <span>Cookies</span></a>
+        <div class="nav-secure">🔒 Secure Checkout</div>
+     </nav>
+
+     <!--PROGRESS BAR  -->
+     <div class="progress-wrap">
+        <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="steps-indicator">
+            <div class="step-dot active" data-step="1">
+                <div class="dot-circle">1</div>
+                <span class="dot-label">Cart</span>
+            </div>
+             <div class="step-dot" data-step="2">
+                <div class="dot-circle">2</div>
+                <span class="dot-label">Delivery</span>
+            </div>
+             <div class="step-dot" data-step="3">
+                <div class="dot-circle">3</div>
+                <span class="dot-label">Payment</span>
+            </div>
+             <div class="step-dot" data-step="4">
+                <div class="dot-circle">✔️</div>
+                <span class="dot-label">Confirmed</span>
+            </div>
+        </div>
+     </div>
+
+     <!-- MAIN LAYOUT -->
+      <main class="checkout-main">
+
+        <!-- LEFT: STEP PANELS -->
+         <div class="checkout-left">
+
+            <!-- STEP 1: CART REVIEW -->
+             <div class="step-panel active" id="step-1">
+                <div class="panel-header">
+                    <h2 class="panel-title">🛒 Review Your Order</h2>
+                    <p  class="panel-sub">Make sure everything looks good before you continue.</p>
+                </div>
+
+                <div class="cart-review-list" id="cartReviewList">
+                    <!-- Demo items -->
+                     <div class="review-item">
+                        <div class="review-item-emoji">🍪</div>
+                        <div class="review-item-info">
+                            <div class="review-item-name">Gratia Cookies</div>
+                            <div class="review-item-meta">Original - 30g - Small but Mighty</div>
+                        </div>
+                        <div class="review-item-right">
+                            <div class="review-qty-control">
+                                <button class="review-qty-btn" data-action="decrease">-</button>
+                                <span class="review-qty-num">1</span>
+                                <button class="review-qty-btn" data-action="increase">+</button>
+                            </div>
+                            <div class="review-item-price">₦750</div>
+                        </div>
+                     </div>
+                     <div class="review-item">
+                        <div class="review-item-emoji">🍫</div>
+                        <div class="review-item-info">
+                            <div class="review-item-name">Gratia Cookies</div>
+                            <div class="review-item-meta">Chocolate - 45g - Balanced Babe</div>
+                        </div>
+                        <div class="review-item-right">
+                            <div class="review-qty-control">
+                                <button class="review-qty-btn" data-action="decrease">-</button>
+                                <span class="review-qty-num">1</span>
+                                <button  class="review-qty-btn" data-action="increase">+</button>
+                            </div>
+                            <div class="review-item-price">₦1,500</div>
+                        </div>
+                     </div>
+                </div>
+
+                <!-- Promo Code -->
+                 <div class="promo-row">
+                    <input class="promo-input" id="promoInput" type="text"  placeholder="Got a promo code ? Enter here "/>
+                    <button class="promo-btn" id="promoBtn">Apply</button>
+                 </div>
+                 <div class="promo-msg" id="promoMsg"></div>
+
+                 <div class="step-actions">
+                    <a href="index.html" class="btn-back-link">← Back to Shop</a>
+                    <button class="btn-next" id="step1Next">Continue to Delivery →</button>
+                 </div>
+             </div>
+
+             <!-- STEP 2: DELIVERY INFO -->
+              <div class="step-panel"  id="step-2">
+                <div  class="panel-header">
+                    <h2 class="panel-title">🚚 Delivery Information</h2>
+                    <p class="panel-sub">Where should we send your cookies?</p>
+                </div>
+
+                <form class="checkout-form" id="deliveryForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">First Name<span class="required">*</span></label>
+                            <input class="form-input" id="firstName" type="text" placeholder="e.g. Cassandra"/>
+                            <span class="form-error" id="firstNameErr"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name <span class="required">*</span></label>
+                            <input class="form-input" id="lastName" type="text" placeholder="e.g. Ajibawo"/>
+                            <span class="form-error" id="lastNameErr"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Email Address <span class="required">*</span></label>
+                            <input class="form-input" id="email" type="email" placeholder="e.g. cassajibawo@gmail.com"/>
+                            <span class="form-error" id="emailErr"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone Number <span class="required">*</span></label>
+                            <input class="form-input" id="phone" type="tel" placeholder="e.g. 08123456789"/>
+                            <span class="form-error" id="phoneErr"></span>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label  class="form-label">Delivery Address <span class="required">*</span></label>
+                        <input class="form-input" id="address" type="text" placeholder="e.g. House number, Street name"/>
+                        <span class="form-error" id="addressErr"></span>
+                    </div>
+                    <div class="form-row">
+                     <div class="form-group">
+                        <label class="form-label">City <span class="required">*</span></label>
+                        <input class="form-input" id="city" type="text" placeholder="e.g. Lagos"/>
+                        <span class="form-error" id="cityErr"></span>
+                     </div>
+                     <div class="form-group">
+                        <label for="state" class="form-label">State <span class="required">*</span></label>
+                        <select class="form-input form-select" id="state">
+                            <option value="">Select State</option>
+                            <option>Abia</option>
+                            <option>Adamawa</option>
+                            <option>Akwa Ibom</option>
+                            <option>Anambra</option>
+                            <option>Bauchi</option>
+                            <option>Bayelsa</option>
+                            <option>Benue</option>
+                            <option>Borno</option>
+                            <option>Cross River</option>
+                            <option>Delta</option>
+                            <option>Ebonyi</option>
+                            <option>Edo</option>
+                            <option>Ekiti</option>
+                            <option>Enugu</option>
+                            <option>FCT - Abuja</option>
+                            <option>Gombe</option>
+                            <option>Imo</option>
+                            <option>Jigawa</option>
+                            <option>Kaduna</option>
+                            <option>Kano</option>
+                            <option>Katsina</option>
+                            <option>Kebbi</option>
+                            <option>Kogi</option>
+                            <option>Kwara</option>
+                            <option>Lagos</option>
+                            <option>Nasarawa</option>
+                            <option>Niger</option>
+                            <option>Ogun</option>
+                            <option>Ondo</option>
+                            <option>Osun</option>
+                            <option>Oyo</option>
+                            <option>Plateau</option>
+                            <option>Rivers</option>
+                            <option>Sokoto</option>
+                            <option>Taraba</option>
+                            <option>Yobe</option>
+                            <option>Zamfara</option>
+                        </select>
+                        <span class="form-error" id="stateErr"></span>
+                      </div>
+                    </div>
+
+                    <!-- Delivery method -->
+                    <div class="form-group full-width">
+                     <label class="form-label">Delivery Method <span class="required">*</span></label>
+                     <div class="delivery-options">
+                        <label  class="delivery-option active" id="standardOpt" >
+                         <input type="radio" name="delivery" value="standard" checked/>
+                         <div class="delivery-option-info">
+                          <span class="delivery-name">🚚 Standard Delivery</span>
+                          <span class="delivery-desc">3 - 5 business days</span>
+                         </div>
+                         <span class="delivery-price">₦1,500</span>
+                        </label>
+                        <label class="delivery-option" id="expressOpt">
+                            <input type="radio" name="delivery" value="express"/>
+                          <div class="delivery-option-info">
+                            <span class="delivery-name">⚡ Express delivery</span>
+                            <span class="delivery-desc">Next business day</span>
+                          </div>
+                          <span class="delivery-price">₦2,500</span>
+                        </label>
+                        <label class="delivery-option" id="pickupOpt">
+                          <input type="radio" name="delivery" value="pickup"/>
+                          <div class="delivery-option-info">
+                             <span class="delivery-name">🏪 Pick Up</span>
+                             <span class="delivery-desc">Collect from our store</span>
+                          </div>
+                          <span class="delivery-price free">FREE</span>
+                        </label>
+                     </div>
+                 </div>
+                </form>
+
+                <div class="step-actions">
+                <button class="btn-prev" id="step2Prev">← Back</button>
+                <button class="btn-next" id="step2Next">Continue to Payment →</button>
+               </div>
+              </div>
+
+            <!--STEP 3: PAYMENT  -->
+            <div class="step-panel" id="step-3">
+                <div class="panel-header">
+                  <h2 class="panel-title">💳 Payment</h2>
+                  <p class="panel-sub">Choose how you'd like to pay. All transactions are secure and encrypted.</p>
+                </div>
+
+            <!--Payment method tabs  -->
+            <div class="payment-tabs">
+                <button class="pay-tab active" data-method="card">💳 Card</button>
+                <button class="pay-tab" data-method="transfer">🏦 Bank transfer </button>
+                <button class="pay-tab" data-action="pod">🚚 Pay on Delivery</button>
+            </div>
+
+            <!-- Card Payment -->
+             <div class="payment-panel active" id="pay-card">
+                <form class="checkout-form" id="cardForm" novalidate>
+                    <div class="form-group full-width">
+                      <label class="form-label">Name on Card <span class="required">*</span></label>
+                      <input class="form-input" id="cardName" type="text" placeholder="As it appears on your card"/>
+                      <span class="form-error" id="cardNameErr"></span>
+                    </div>
+                    <div class="form-group ful-width">
+                        <label class="form-label">Card Number <span class="required">*</span></label>
+                        <div class="card-input-wrap">
+                          <input class="form-input" id="cardNumber" type="text" placeholder="0000 0000 0000 0000" maxlength="19"/>
+                          <span class="card-type-icon" id="cardTypeIcon">💳</span>
+                        </div>
+                        <span class="form-error" id="cardNumberErr"></span>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                          <label class="form-label">Expiry Date <span class="reqiured">*</span></label>
+                          <input class="form-input" id="cardExpiry" type="text" placeholder="MM / YY" maxlength="7"/>
+                          <span class="form-error" id="cardExpiryErr"></span>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-label">CVV <span class="required">*</span></label>
+                          <input class="form-input" id="cardCvv" type="text" placeholder="***" maxlength="3"/>
+                          <span class="form-error" id="cardCvvErr"></span>
+                        </div>
+                    </div>
+                    <div class="save-card-row">
+                        <label class="save-card-label">
+                            <input type="checkbox" id="saveCard"/>
+                            <span>Save this for future orders</span>
+                        </label>
+                    </div>
+                </form>
+             </div>
+            <!-- Bank Transfer -->
+             <div class="payment-panel" id="pay-transfer">
+                <div class="bank-transfer-info">
+                  <div class="bank-detail-card">
+                    <p class="bank-instruction">Transfer your exact order total to the account below. Your order wil be confirmed once payment is received.</p>
+                    <div class="bank-details">
+                        <div class="bank-row">
+                            <span class="bank-label">Bank</span>
+                            <span class="bank-value">Opay</span>
+                        </div>
+                        <div class="bank-row">
+                            <span class="bank-label">Account Name</span>
+                            <span class="bank-value">Gratia Cookies Ltd</span>
+                        </div>
+                        <div class="bank-row">
+                            <span class="bank-label">Account Number</span>
+                            <span class="bank-value acct-num">8140016139
+                                <button class="copy-btn" id="copyAcct">Copy</button>
+                            </span>
+                        </div>
+                        <div class="bank-row">
+                            <span class="bank-label">Amount</span>
+                            <span class="bank-value amount-due" id="transferAmount">₦0</span>
+                        </div>
+                    </div>
+                    <p class="bank-note">⚠️ Use your name as payment reference. Send your receipt to <strong>orders@gratiafood.ng</strong></p>
+                 </div>
+                </div>
+             </div>
+
+             <!-- Pay on Delivery -->
+              <div class="payment-panel" id="pay-pod">
+                <div class="pod-info">
+                    <div class="pod-icon">🚚</div>
+                    <h3 class="pod-title">Pay on Delivery</h3>
+                    <p class="pod-desc">Pay cash when your order arrives at your doorstep. Our delivery agent will collect payment.</p>
+                    <div class="pod-notes">
+                        <div class="pod-note">✅ Available for all state in Nigeria</div>
+                        <div class="pod-note">✅ Have exact change ready if possible</div>
+                        <div class="pod-note">⚠️ Extra ₦500 handling fee applies</div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="step-actions">
+                <button class="btn-prev" id="step3Prev">← Back</button>
+                <button class="btn-next" id="step3Next">Place Order →</button>
+              </div>
+            </div>
+
+            <!-- STEP 4: Confirmation -->
+             <div class="step-panel" id="step-4">
+                <div class="confirmation-wrap">
+                    <div class="confirm-animation">
+                        <div class="confirm-circle">✔️</div>
+                    </div>
+                    <h2 class="confirm-title">Order Placed! 🎉</h2>
+                    <p class="confirm-sub">Thank you for your order. Your cookies is being prepared with love!</p>
+
+                    <div class="order-ref">
+                        Order Reference: <strong id="orderRef">#HBT-00000</strong>
+                    </div>
+
+                    <div class="confirm-details"  id="confirmDetails"></div>
+
+                    <div class="confirm-timeline">
+                        <div class="timeline-item done">
+                            <div class="timeline-dot">✔️</div>
+                            <div class="timeline-info">
+                                <div class="timeline-title">Order Confirmed</div>
+                                <div  class="timeline-sub">Just now</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-info">
+                                <div class="timeline-title">Being Prepared</div>
+                                <div class="timeline--sub">Within 24 hours</div>
+                            </div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-info">
+                                <div class="timeline-title">Out for deivery</div>
+                                <div class="timeline--sub">3-5 business days</div>
+                            </div>
+                        </div>
+                          <div class="timeline-item">
+                            <div class="timeline-dot">🍪</div>
+                            <div class="timeline-info">
+                                <div class="timeline-title">Deivered!</div>
+                                <div class="timeline--sub">Enjoy your cookies</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="confirm-actions">
+                        <a href="index.html" class="btn-next">← Back to Shop</a>
+                    </div>
+                </div>
+             </div>
+
+         </div>
+         <!-- RIGHT: ORDER SUMMARY -->
+            <aside class="checkout-right">
+             <div class="order-summary">
+                <h3 class="summary-title">Order Summary</h3>
+
+                <div class="summary-items" id="summaryItems">
+                    <div class="summary-item">
+                        <span>Gratia Cookies x 2</span>
+                        <span>₦1,500</span>
+                    </div>
+                     <div class="summary-item">
+                        <span>Gratia Cookies x 1</span>
+                        <span>₦1,500</span>
+                    </div>
+                </div>
+
+                <div class="summary-divider"></div>
+
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="summarySubtotal">₦3,000</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery</span>
+                        <span id="summaryDelivery">₦1,000</span>
+                    </div>
+                    <div class="summary-row promo-row-summary" id="promoRowSummary">
+                        <span>Promo Discount</span>
+                        <span class="promo-discount" id="summaryDiscount">-₦0</span>
+                    </div>
+
+                    <div class="summary-divider"></div>
+
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span id="summary-total">₦4,000</span>
+                    </div>
+
+                    <div class="summary-perks">
+                        <div class="summary-perk">🔒 Secure & encrypted payment</div>
+                        <div class="summary-perk">🔁 Easy returns within 7 days</div>
+                        <div class="summary-perk">🍃 Freshly made to order</div>
+                    </div>
+                </div>
+            </aside>
+
+        </main>
+
+    <script src="checkout.js"></script>
+</body>
+</html
