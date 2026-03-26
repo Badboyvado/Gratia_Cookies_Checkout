@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateSummary() {
         document.getElementById("summarySubtotal").textContent  = formatNaira(getSubtotal());
         document.getElementById("summaryDelivery").textContent = getDeliveryfee() === 0 ? "FREE" : formatNaira(getDeliveryfee());
-        // document.getElementById("summaryTotal").textContent = formatNaira(getTotal());
+        document.getElementById("summaryTotal").textContent = formatNaira(getTotal());
         document.getElementById("transferAmount").textContent = formatNaira(getTotal());
         
         // Promo row
