@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gratia Cookies - Checkout </title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="checkout.css"/>
+</head>
+<body>
+    <!-- NAV -->
+     <nav class="checkout-nav">
+        <a href="index.html" class="nav-logo">Gratia <span>Cookies</span></a>
+        <div class="nav-secure">🔒 Secure Checkout</div>
+     </nav>
+
+     <!--PROGRESS BAR  -->
+     <div class="progress-wrap">
+        <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="steps-indicator" id="stepsIndicator"></div>
+     </div>
+
+     <!-- MAIN LAYOUT -->
+      <main class="checkout-main">
+
+        <!-- LEFT: STEP PANELS -->
+         <div class="checkout-left">
+
+            <!-- STEP 1: CART REVIEW -->
+             <div class="step-panel active" id="step-1">
+                <div class="panel-header">
+                    <h2 class="panel-title">🛒 Review Your Order</h2>
+                    <p  class="panel-sub">Make sure everything looks good before you continue.</p>
+                </div>
+                
+                <!-- Cart Items rendered by JS -->
+                <div class="cart-review-list" id="cartReviewList"></div>
+
+                <!-- Promo Code -->
+                 <div class="promo-row">
+                    <input class="promo-input" id="promoInput" type="text"  placeholder="Got a promo code ? Enter here "/>
+                    <button class="promo-btn" id="promoBtn">Apply</button>
+                 </div>
+                 <div class="promo-msg" id="promoMsg"></div>
+
+                 <div class="step-actions">
+                    <a href="index.html" class="btn-back-link">← Back to Shop</a>
+                    <button class="btn-next" id="step1Next">Continue to Delivery →</button>
+                 </div>
+             </div>
+
+             <!-- STEP 2: DELIVERY INFO -->
+            <div class="step-panel"  id="step-2">
+                <div  class="panel-header">
+                    <h2 class="panel-title">🚚 Delivery Information</h2>
+                    <p class="panel-sub">Where should we send your cookies?</p>
+                </div>
+                <form class="checkout-form" id="deliveryForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">First Name<span class="required">*</span></label>
+                            <input class="form-input" id="firstName" type="text" placeholder="e.g. Cassandra"/>
+                            <span class="form-error" id="firstNameErr"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name <span class="required">*</span></label>
+                            <input class="form-input" id="lastName" type="text" placeholder="e.g. Ajibawo"/>
+                            <span class="form-error" id="lastNameErr"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Email Address <span class="required">*</span></label>
+                            <input class="form-input" id="email" type="email" placeholder="e.g. cassajibawo@gmail.com"/>
+                            <span class="form-error" id="emailErr"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone Number <span class="required">*</span></label>
+                            <input class="form-input" id="phone" type="tel" placeholder="e.g. 08123456789"/>
+                            <span class="form-error" id="phoneErr"></span>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label  class="form-label">Delivery Address <span class="required">*</span></label>
+                        <input class="form-input" id="address" type="text" placeholder="e.g. House number, Street name"/>
+                        <span class="form-error" id="addressErr"></span>
+                    </div>
+                    <div class="form-row">
+                     <div class="form-group">
+                        <label class="form-label">City <span class="required">*</span></label>
+                        <input class="form-input" id="city" type="text" placeholder="e.g. Lagos"/>
+                        <span class="form-error" id="cityErr"></span>
+                     </div>
+                     <div class="form-group">
+                        <label for="state" class="form-label">State <span class="required">*</span></label>
+                        <!-- State options rendered by JS -->
+                        <select class="form-input form-select" id="state"></select>
+                        <span class="form-error" id="stateErr"></span>
+                      </div>
+                    </div>
+
+                    <!-- Delivery method Options rendered by JS-->
+                    <div class="form-group full-width">
+                     <label class="form-label">Delivery Method <span class="required">*</span></label>
+                     <div class="delivery-options" id="deliveryOptions"></div>
+                    </div>
+                </form>
+                <div class="step-actions">
+                  <button class="btn-prev" id="step2Prev">← Back</button>
+                  <button class="btn-next" id="step2Next">Continue to Payment →</button>
+                </div>
+              </div>
+
+            <!--STEP 3: PAYMENT  -->
+            <div class="step-panel" id="step-3">
+                <div class="panel-header">
+                  <h2 class="panel-title">💳 Payment</h2>
+                  <p class="panel-sub">Choose how you'd like to pay. All transactions are secure and encrypted.</p>
+                </div>
+
+            <!--Payment method tabs rendered by JS -->
+            <div class="payment-tabs" id="paymentTabs"></div>
+
+            <!-- Card Payment -->
+             <div class="payment-panel active" id="pay-card">
+                <form class="checkout-form" id="cardForm" novalidate>
+                    <div class="form-group full-width">
+                      <label class="form-label">Name on Card <span class="required">*</span></label>
+                      <input class="form-input" id="cardName" type="text" placeholder="As it appears on your card"/>
+                      <span class="form-error" id="cardNameErr"></span>
+                    </div>
+                    <div class="form-group ful-width">
+                        <label class="form-label">Card Number <span class="required">*</span></label>
+                        <div class="card-input-wrap">
+                          <input class="form-input" id="cardNumber" type="text" placeholder="0000 0000 0000 0000" maxlength="19"/>
+                          <span class="card-type-icon" id="cardTypeIcon">💳</span>
+                        </div>
+                        <span class="form-error" id="cardNumberErr"></span>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                          <label class="form-label">Expiry Date <span class="reqiured">*</span></label>
+                          <input class="form-input" id="cardExpiry" type="text" placeholder="MM / YY" maxlength="7"/>
+                          <span class="form-error" id="cardExpiryErr"></span>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-label">CVV <span class="required">*</span></label>
+                          <input class="form-input" id="cardCvv" type="text" placeholder="***" maxlength="3"/>
+                          <span class="form-error" id="cardCvvErr"></span>
+                        </div>
+                    </div>
+                    <div class="save-card-row">
+                        <label class="save-card-label">
+                            <input type="checkbox" id="saveCard"/>
+                            <span>Save this for future orders</span>
+                        </label>
+                    </div>
+                </form>
+             </div>
+
+            <!-- Bank Transfer  - Amount injected by JS -->
+                <div class="payment-panel" id="pay-transfer">
+                  <div class="bank-detail-card">
+                    <p class="bank-instruction">Transfer your exact order total to the account below. Your order wil be confirmed once payment is received.</p>
+                    <div class="bank-details">
+                        <div class="bank-row">
+                            <span class="bank-label">Bank</span>
+                            <span class="bank-value">Opay</span>
+                        </div>
+                        <div class="bank-row">
+                            <span class="bank-label">Account Name</span>
+                            <span class="bank-value">Gratia Cookies Ltd</span>
+                        </div>
+                        <div class="bank-row">
+                            <span class="bank-label">Account Number</span>
+                            <span class="bank-value acct-num">8140016139
+                                <button class="copy-btn" id="copyAcct">Copy</button>
+                            </span>
+                        </div>
+                        <div class="bank-row">
+                            <span class="bank-label">Amount to Transfer</span>
+                            <!-- JS Injects live total here -->
+                            <span class="bank-value amount-due" id="transferAmount">₦0</span>
+                        </div>
+                    </div>
+                    <p class="bank-note">⚠️ Use your name as payment reference. Send your receipt to <strong>orders@gratiafood.ng</strong></p>
+                 </div>
+                </div>
+
+             <!-- Pay on Delivery -->
+              <div class="payment-panel" id="pay-pod">
+                <div class="pod-info">
+                    <div class="pod-icon">🚚</div>
+                    <h3 class="pod-title">Pay on Delivery</h3>
+                    <p class="pod-desc">Pay cash when your order arrives at your doorstep. Our delivery agent will collect payment.</p>
+                    <!-- POD notes rendered by JS so ₦500 fee stays in sync  -->
+                    <div class="pod-notes" id="podNotes"></div>
+                </div>
+              </div>
+
+              <div class="step-actions">
+                <button class="btn-prev" id="step3Prev">← Back</button>
+                <button class="btn-next" id="step3Next">Place Order →</button>
+              </div>
+            </div>
+
+            <!-- STEP 4: Confirmation - all details injected by JS-->
+             <div class="step-panel" id="step-4">
+                <div class="confirmation-wrap">
+                    <div class="confirm-animation">
+                        <div class="confirm-circle">✔️</div>
+                    </div>
+                    <h2 class="confirm-title">Order Placed! 🎉</h2>
+                    <p class="confirm-sub">Thank you for your order. Your cookies is being prepared with love!</p>
+                    <div class="order-ref">Order Reference: <strong id="orderRef"></strong></div>
+                        <!-- All confirmation details injected by JS -->
+                    <div class="confirm-details"  id="confirmDetails"></div>
+                    <!-- Timeline injected by JS -->
+                    <div class="confirm-timeline" id="confirmTimeline"></div>
+                    <div class="confirm-actions">
+                        <a href="index.html" class="btn-next">← Back to Shop</a>
+                    </div>
+                </div>
+             </div>
+
+         </div>
+         <!-- RIGHT: ORDER SUMMARY all values injected by JS-->
+            <aside class="checkout-right">
+             <div class="order-summary">
+                <h3 class="summary-title">Order Summary</h3>
+                <div class="summary-items" id="summaryItems"></div>
+                <div class="summary-divider"></div>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="summarySubtotal"></span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery</span>
+                        <span id="summaryDelivery"></span>
+                    </div>
+                    <div class="summary-row promo-row-summary" id="promoRowSummary">
+                        <span>Promo Discount</span>
+                        <span class="promo-discount" id="summaryDiscount"></span>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span id="summaryTotal"></span>
+                    </div>
+                    <div class="summary-perks">
+                        <div class="summary-perk">🔒 Secure & encrypted payment</div>
+                        <div class="summary-perk">🔁 Easy returns within 7 days</div>
+                        <div class="summary-perk">🍃 Freshly made to order</div>
+                    </div>
+                </div>
+            </aside>
+
+        </main>
+
+    <script src="checkout.js"></script>
+</body>
+</html
