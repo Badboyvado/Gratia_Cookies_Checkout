@@ -391,7 +391,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         `).join("");
 
-        // Delivery timeline - desc comes from selected dleivery method
+        // Delivery timeline - desc comes from selected delivery method
         const deliveryDesc = deliveryMethod ? deliveryMethod.desc : "3-5 business days";
         const timelineSteps = [
             {icon:"✔️",  title: "Order Confirmed", sub: "Just now", done: true},
