@@ -1,44 +1,76 @@
-# Gratia Cookies 🍪
+# Gratia Checkout ⚡
 
-A warm, cozy e-commerce product page for a Nigerian snack brand — built with pure HTML, CSS & JavaScript. No frameworks, no libraries, just clean vanilla code.
+A fully dynamic 4-step checkout flow for the Gratia Cookies e-commerce product page — built with pure HTML, CSS & JavaScript. Zero hard coded values in HTML. JavaScript owns and renders all data dynamically.
 
 ## 🌐 Live Demo
-[View Live Site](https://gratia-cookies.vercel.app/)
+[View Live Site](https://gratia-cookies-checkout.vercel.app/)
 
 ## 📸 Preview
-![Gratia Cookies Preview](preview.png)
+![Gratia Checkout Preview]()
+
+---
+
+## 🪜 The 4 Steps
+
+**Step 1 — Cart Review**
+- All cart items rendered dynamically from JavaScript
+- Adjust item quantities with live price updates
+- Promo code system — try `GRATIA10` (10% off) or `CHINCHIN20` (20% off)
+- Discount reflects instantly in the order summary
+
+**Step 2 — Delivery Information**
+- Full form with 7 fields — first name, last name, email, phone, address, city, state
+- All 37 Nigerian states populated dynamically from a JS array
+- Real-time field validation — green border ✅ on valid, red ❌ on invalid
+- 3 delivery methods rendered from JS data — Standard (₦1,000), Express (₦2,500), Free Pickup
+- Delivery fee updates live in the order summary on selection
+
+**Step 3 — Payment**
+- 3 payment method tabs rendered dynamically — Card, Bank Transfer, Pay on Delivery
+- Card panel auto-formats card number with spaces, detects Visa vs Mastercard, formats expiry to MM / YY
+- Bank Transfer shows account details with one-click copy button and live total amount
+- Pay on Delivery shows terms including ₦500 handling fee — all from JS, never hard coded
+- Card form validates all fields before proceeding
+
+**Step 4 — Confirmation**
+- Animated ✓ circle on order success
+- Unique order reference generated e.g. `#HBT-482910`
+- Full order summary — name, address, delivery method, fees, payment method, total
+- Delivery timeline rendered dynamically with correct delivery duration from selected method
 
 ---
 
 ## ✨ Features
 
-- 🖼️ Product image gallery with thumbnail switching
-- 🌾 Flavour selector — Original, Chocolate, Coconut
-- 📦 Pack size selector — 30g, 45g, 1kg with live price display
-- ➕ Quantity control with + / − buttons
-- 🛒 Add to Cart with animated button feedback
-- 🗂️ Side drawer cart sliding in from the right
-  - Items stack when same flavour + size is added
-  - Adjust quantity per item inside the drawer
-  - Remove individual items with 🗑️
-  - Live subtotal in Naira (₦)
-  - Locks background scroll when open
-  - Close via ✕ button, overlay click, or Escape key
-- 📋 Tabbed content — Description, Nutrition Facts, Reviews
-- ⭐ Reviews section with rating bars
-- 🛍️ Related products section
-- 🔔 Toast notifications for all cart actions
-- 🎞️ Scroll reveal animations
+- 🔄 Fully dynamic rendering — JS owns all data, HTML has zero hard coded values
+- ✅ Form validation on every required field with clear error messages
+- 📊 Live order summary that updates on every selection change
+- 🎨 Animated step progress bar and step indicator dots
+- 💳 Smart card input — auto-spacing, auto-expiry format, card type detection
+- 📋 One-click account number copy for bank transfer
+- 🧾 Promo code engine with percentage discounts
+- 🚚 POD handling fee automatically included in totals
 - 📱 Fully responsive design
-- 🇳🇬 Nigerian Naira (₦) pricing
 
 ---
 
 ## 🛠️ Built With
 
-- HTML5
-- CSS3 (Custom Properties, Flexbox, Grid, Animations, Transitions)
-- Vanilla JavaScript (addEventListener, IntersectionObserver, DOM manipulation)
+- HTML5 — structure and empty containers only
+- CSS3 — custom properties, transitions, animations, grid, flexbox
+- Vanilla JavaScript — all rendering, state management, validation, and logic
+
+---
+
+## 🧠 JavaScript Concepts Practiced
+
+- **Dynamic rendering** — building all UI from JS data arrays
+- **Single source of truth** — one place for all data, no conflicts
+- **Form validation** — real-time field checking with visual feedback
+- **State management** — tracking selections across 4 steps
+- **String formatting** — card number spacing, expiry, Naira currency
+- **Event delegation** — handling events on dynamically created elements
+- **Template literals** — building HTML strings cleanly in JS
 
 ---
 
@@ -46,13 +78,13 @@ A warm, cozy e-commerce product page for a Nigerian snack brand — built with p
 
 1. Clone the repo
 ```bash
-git clone https://github.com/Badboyvado/Gratia_Cookies.git
+git clone https://github.com/Badboyvado/Gratia_Cookies_Checkout.git
 ```
 
 2. Open `index.html` in your browser
 ```
 No installations or dependencies needed!
-Just double click index.html and it opens in your browser.
+Double click checkout.html and it opens in your browser.
 ```
 
 ---
@@ -60,23 +92,19 @@ Just double click index.html and it opens in your browser.
 ## 📁 Project Structure
 
 ```
-gratia-cookies-product-page/
-├── index.html      # Page structure and content
-├── style.css       # All styling and animations
-├── script.js       # All interactivity and cart logic
-└── README.md       # You are here
+gratia-cookies-checkout/
+├── index.html          # Checkout page — empty containers only
+├── checkout.css        # Checkout styles
+├── checkout.js         # All checkout logic and rendering
+└── README.md           # You are here
 ```
 
 ---
 
-## 🧠 What I Learned
+## 🔗 Related Project
 
-- How to build a fully functional side drawer cart using only vanilla JS
-- Managing cart state (adding, stacking, updating, removing items)
-- Using `data-*` attributes to keep HTML clean with zero `onclick`
-- IntersectionObserver API for scroll reveal animations
-- CSS transitions and transforms for smooth drawer animation
-- Separating concerns — HTML for structure, CSS for style, JS for behaviour
+This checkout page is part of the **Gratia Cookies** product page project.
+👉 [View the Product Page README]()
 
 ---
 
