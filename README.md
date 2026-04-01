@@ -15,7 +15,7 @@ A fully dynamic 4-step checkout flow for the Gratia Cookies e-commerce product p
 **Step 1 — Cart Review**
 - All cart items rendered dynamically from JavaScript
 - Adjust item quantities with live price updates
-- Promo code system — try `GRATIA10` (10% off) or `CHINCHIN20` (20% off)
+- Promo code system — try `GRATIA10` (10% off) or `COOKIES20` (20% off)
 - Discount reflects instantly in the order summary
 
 **Step 2 — Delivery Information**
