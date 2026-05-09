@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
         container.innerHTML = [
             "✅ Available for all states in Ngeria",
             "✅ Have exact change ready if possible",
-            "⚠️ Extra ${fmt(POD_FEE)}  handling fee applies",
+            `⚠️ Extra ${fmt(POD_FEE)}  handling fee applies`,
         ].map((note) => `<div class ="pod-note">${note}</div>`).join("");
     }
 
